@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUK OPAH</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #2a003f, #0f0f1f);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Efek lampu latar */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%),
+                  radial-gradient(circle, rgba(180,0,255,0.4), transparent 80%);
+      animation: glow 6s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes glow {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+      100% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+    }
+
+    .container {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #fff, 0 0 30px #b200ff;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+      text-shadow: 0 0 8px #fff, 0 0 20px #9d00ff;
+    }
+
+    .produk-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3), 0 0 30px rgba(180,0,255,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: flicker 3s infinite alternate;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px #fff, 0 0 40px #b200ff;
+    }
+
+    @keyframes flicker {
+      0% { box-shadow: 0 0 10px #fff, 0 0 20px #b200ff; }
+      50% { box-shadow: 0 0 20px #fff, 0 0 40px #b200ff; }
+      100% { box-shadow: 0 0 15px #fff, 0 0 30px #9d00ff; }
+    }
+
+    .harga {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #ff4dff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px #fff, 0 0 15px #b200ff;
+    }
+
+    .jumlah {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .btn-3d {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(145deg, #ff00ff, #9d00ff);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #fff, 0 0 20px #b200ff;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .btn-3d:hover {
+      box-shadow: 0 0 15px #fff, 0 0 30px #b200ff, 0 0 50px #fff;
+      transform: scale(1.05);
+    }
+
+    .btn-3d:active {
+      transform: translateY(4px);
+    }
+
+    /* Input Nama */
+    .login {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .login input {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #1e1e2f;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 350px;
+      text-align: center;
+      box-shadow: 0 0 20px #fff, 0 0 40px #b200ff;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px #fff, 0 0 20px #b200ff;
+    }
+
+    .modal-content p {
+      margin: 8px 0;
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      background: #ff0080;
+      padding: 10px 20px;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #fff, 0 0 20px #b200ff;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.8); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Halaman Login -->
+  <div class="login">
+    <h1>Selamat Datang di PRODUK OPAH</h1>
+    <input type="text" id="nama" placeholder="Masukkan Nama Anda">
+    <button class="btn-3d" onclick="masuk()">Masuk</button>
+  </div>
+
+  <!-- Halaman Produk -->
+  <div class="container" id="produk">
+    <h1 id="welcome"></h1>
+    <h2>🔥 JASTEB GACOR OPAH 🔥</h2>
+
+    <div class="produk-list">
+      <div class="card"><div class="harga">3K</div><div class="jumlah">50 JASTEB</div><button class="btn-3d" onclick="order('3K','50 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">5K</div><div class="jumlah">80 JASTEB</div><button class="btn-3d" onclick="order('5K','80 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">7K</div><div class="jumlah">120 JASTEB</div><button class="btn-3d" onclick="order('7K','120 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">10K</div><div class="jumlah">150 JASTEB</div><button class="btn-3d" onclick="order('10K','150 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">13K</div><div class="jumlah">200 JASTEB</div><button class="btn-3d" onclick="order('13K','200 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">15K</div><div class="jumlah">250 JASTEB</div><button class="btn-3d" onclick="order('15K','250 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">17K</div><div class="jumlah">400 JASTEB</div><button class="btn-3d" onclick="order('17K','400 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">20K</div><div class="jumlah">500 JASTEB</div><button class="btn-3d" onclick="order('20K','500 JASTEB')">Order</button></div>
+      <div class="card"><div class="harga">25K</div><div class="jumlah">1000 JASTEB</div><button class="btn-3d" onclick="order('25K','1000 JASTEB')">Order</button></div>
+    </div>
+  </div>
+
+  <!-- Modal Payment -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <h3>💳 Pembayaran</h3>
+      <p id="orderDetail"></p>
+      <p><b>Dana:</b> 085828481568</p>
+      <p><b>QRIS:</b> Minta ke Opah via WA</p>
+      <p><b>WhatsApp:</b> 081220568534</p>
+      <button class="close-btn" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+
+  <script>
+    function masuk() {
+      const nama = document.getElementById("nama").value.trim();
+      if(nama === "") {
+        alert("Nama wajib diisi!");
+        return;
+      }
+      document.querySelector(".login").style.display = "none";
+      document.getElementById("produk").style.display = "block";
+      document.getElementById("welcome").innerText = "Halo, " + nama + " 👋";
+    }
+
+    function order(harga, jumlah) {
+      document.getElementById("orderDetail").innerText =
+        "Anda memilih " + harga + " untuk " + jumlah;
+      document.getElementById("paymentModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
